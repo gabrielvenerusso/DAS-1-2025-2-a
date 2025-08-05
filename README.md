@@ -2,4 +2,4 @@
 Repositório para adicionar trabalhos e atividades da matéria: Design e Arquitetura de Software
 
 O que é abstração?
-É esconder informações desnecessárias para o entendimento do final.
+É esconder a complexidade e mostrar o essencial.
