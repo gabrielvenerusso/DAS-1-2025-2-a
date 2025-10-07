@@ -119,3 +119,50 @@ Aula 4 - 12/08/2025
 SOLID:
 
 L: Princípio de substituição de Liskov - redefinição de métodos de classe base em classe filho (aplicado quando tem herança). Se há uma herança, com vários filhos, o código dos filhos deve ser feita de tal maneira a manter a compatibilidade com o pai, caso elas forem substituídas (sem quebrar o padrão que o pai tem) Filho(método x) -> Pai <- Filho2(Método x) | aplicar os dois filhos não quebra a classe
+
+Aula - 06/10/2025
+Ideia central
+Além de cumprir as funções do domínio, um sistema só é bem-sucedido se atender a características de arquitetura (muitas vezes chamadas de “não funcionais”). Elas: (1) tratam de preocupações fora do domínio, (2) influenciam a estrutura do design e (3) são críticas para o sucesso da aplicação. Podem ser explícitas (citadas como requisitos) ou implícitas (precisam ser consideradas mesmo sem estarem escritas).
+
+Exemplos de áreas
+Auditoria, desempenho, segurança, requisitos/integrações, dados, legalidade/compliance e escalabilidade.
+
+Por que importam
+Guiam decisões estruturais (módulos, camadas, integrações, tecnologia). Ex.: usar processador de pagamentos terceirizado pode simplificar segurança e isolamento; processar pagamentos na aplicação exige módulos/serviços específicos e decisões fortes de segurança — a arquitetura muda.
+
+Categorias e exemplos
+
+Operacionais:
+Disponibilidade/Continuidade: tempo ativo e recuperação de falhas.
+Desempenho: tempos de resposta/throughput.
+Recuperabilidade/Confiabilidade/Robustez: restaurar serviço, operar sob falhas, resistir a picos.
+Escalabilidade: crescer sem degradação relevante.
+
+Estruturais:
+Configuração/Extensão: facilidade de parametrizar e adicionar funções.
+Instalabilidade/Atualização: instalar/atualizar com baixo atrito.
+Aproveitamento/Reuso e Modularidade.
+Localização/Portabilidade/Suporte/Manutenção.
+
+Transversais:
+Acessibilidade e Usabilidade.
+Armazenamento/Retenção de dados.
+Autenticação/Autorização.
+Legalidade/Privacidade (LGPD, auditoria).
+Segurança (criptografia, chaves, logs).
+Suporte/Operabilidade (SLA, monitoramento).
+
+Relação com modelos ISO
+A ISO agrupa capacidades como: Eficiência de desempenho, Compatibilidade (coexistência/interoperabilidade), Usabilidade (adequação, aprendizado, acessibilidade), Confiabilidade (maturidade, tolerância a falhas, recuperabilidade), Segurança, Manutenibilidade (análise, modificação, testabilidade) e Portabilidade. “Adequação/totalidade/correção funcional” dizem respeito ao domínio e não são, por si, características arquiteturais.
+
+Ambiguidades e sobreposições
+Termos podem conflitar/ser vagos (ex.: interoperabilidade vs. compatibilidade). Muitas características se sobrepõem (ex.: disponibilidade ↔ confiabilidade).
+
+Trade-offs
+Toda escolha favorece algumas qualidades e prejudica outras (p.ex., mais segurança pode reduzir desempenho). “Arquitetura menos pior” = tornar explícitos esses compromissos e equilibrá-los com os objetivos do negócio.
+Como aplicar na prática
+Eleger poucas características prioritárias.
+Transformá-las em cenários mensuráveis (estímulo → resposta esperada).
+Definir táticas/decisões de design que as suportem.
+Mapear e aceitar trade-offs conscientemente.
+Validar continuamente (testes, monitoração, SLO/SLA).
