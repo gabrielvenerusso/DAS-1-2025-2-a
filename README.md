@@ -166,3 +166,28 @@ Transformá-las em cenários mensuráveis (estímulo → resposta esperada).
 Definir táticas/decisões de design que as suportem.
 Mapear e aceitar trade-offs conscientemente.
 Validar continuamente (testes, monitoração, SLO/SLA).
+
+
+Aula - 07/10/2025
+🧩 CQRS — Command Query Responsibility Segregation
+O CQRS (Command Query Responsibility Segregation) é um padrão arquitetural que separa as operações de escrita (Commands) e leitura (Queries) de um sistema, permitindo maior clareza, performance e escalabilidade.
+
+⚙️ Conceito
+Tradicionalmente, o mesmo modelo de dados é usado tanto para atualizar quanto para consultar informações.
+Com CQRS, esses dois fluxos são separados:
+
+Tipo	Responsabilidade	Exemplo	Foco
+Command	Executa ações que alteram o estado do sistema (criar, atualizar, excluir).	CreateOrderCommand, UpdateClienteCommand	Escrita
+Query	Recupera dados sem alterar o estado do sistema.	GetOrderByIdQuery, ListarClientesQuery	Leitura
+
+Essa separação permite otimizações específicas para cada operação e facilita o uso de diferentes modelos de dados ou até bancos independentes.
+
+🚀 Benefícios
+🔹 Separação de responsabilidades: leitura e escrita ficam independentes.
+🔹 Maior escalabilidade: leitura e escrita podem escalar separadamente.
+🔹 Performance otimizada: queries mais rápidas e simples.
+🔹 Código mais limpo: fácil manutenção e testes.
+
+⚠️ Pontos de Atenção
+🔸 Aumenta a complexidade da arquitetura.
+🔸 Pode exigir sincronização entre os modelos de leitura e escrita.
