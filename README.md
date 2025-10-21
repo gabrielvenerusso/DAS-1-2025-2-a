@@ -120,74 +120,69 @@ SOLID:
 
 L: Princípio de substituição de Liskov - redefinição de métodos de classe base em classe filho (aplicado quando tem herança). Se há uma herança, com vários filhos, o código dos filhos deve ser feita de tal maneira a manter a compatibilidade com o pai, caso elas forem substituídas (sem quebrar o padrão que o pai tem) Filho(método x) -> Pai <- Filho2(Método x) | aplicar os dois filhos não quebra a classe
 
-Aula - 06/10/2025
-Ideia central
-Além de cumprir as funções do domínio, um sistema só é bem-sucedido se atender a características de arquitetura (muitas vezes chamadas de “não funcionais”). Elas: (1) tratam de preocupações fora do domínio, (2) influenciam a estrutura do design e (3) são críticas para o sucesso da aplicação. Podem ser explícitas (citadas como requisitos) ou implícitas (precisam ser consideradas mesmo sem estarem escritas).
 
-Exemplos de áreas
-Auditoria, desempenho, segurança, requisitos/integrações, dados, legalidade/compliance e escalabilidade.
+Aula 5 - 26/08/2025 Fundamentos da Arquitetura de Software
 
-Por que importam
-Guiam decisões estruturais (módulos, camadas, integrações, tecnologia). Ex.: usar processador de pagamentos terceirizado pode simplificar segurança e isolamento; processar pagamentos na aplicação exige módulos/serviços específicos e decisões fortes de segurança — a arquitetura muda.
+Caracteristicas da Arquitetura = requisitos não funcionais Disponibilidade - estar online por um tempo definido Confiabiliade - o sistema faz o que deve ser feito Segurança - quão seguro o sistema é (cada CPF vazado é no mínimo 50 mil de multa) Testabilidade Escalabildade Agilidade Tolerância a falhas Elasticidade Recuperabilidade Desempenho Implementabilidade Capacidade de aprendizagem
 
-Categorias e exemplos
+É impossível um sistema atender todas as caracnteristicas da arquitetura, sempre ficará alguma coisa pendente
 
-Operacionais:
-Disponibilidade/Continuidade: tempo ativo e recuperação de falhas.
-Desempenho: tempos de resposta/throughput.
-Recuperabilidade/Confiabilidade/Robustez: restaurar serviço, operar sob falhas, resistir a picos.
-Escalabilidade: crescer sem degradação relevante.
+Supply chain - utilização de bliblioteca abertas não confiáveis
 
-Estruturais:
-Configuração/Extensão: facilidade de parametrizar e adicionar funções.
-Instalabilidade/Atualização: instalar/atualizar com baixo atrito.
-Aproveitamento/Reuso e Modularidade.
-Localização/Portabilidade/Suporte/Manutenção.
+DECISÕES DA ARQUITETURA São regras que precisam ser mantidas no sistema, para que o mesmo tenha o mínimo de padronização. exemplo: iremos utilizar arquitetura baseada em camadas.
 
-Transversais:
-Acessibilidade e Usabilidade.
-Armazenamento/Retenção de dados.
-Autenticação/Autorização.
-Legalidade/Privacidade (LGPD, auditoria).
-Segurança (criptografia, chaves, logs).
-Suporte/Operabilidade (SLA, monitoramento).
+Decidir a esturutra do sistema, escolhendo a arquitetura, uma decisão importante, que poderá ter um custo alto se feito de qualquer jeito
 
-Relação com modelos ISO
-A ISO agrupa capacidades como: Eficiência de desempenho, Compatibilidade (coexistência/interoperabilidade), Usabilidade (adequação, aprendizado, acessibilidade), Confiabilidade (maturidade, tolerância a falhas, recuperabilidade), Segurança, Manutenibilidade (análise, modificação, testabilidade) e Portabilidade. “Adequação/totalidade/correção funcional” dizem respeito ao domínio e não são, por si, características arquiteturais.
+A decisão da arquitetura depende das caracteristicas da arquitetura, um depende do outro
 
-Ambiguidades e sobreposições
-Termos podem conflitar/ser vagos (ex.: interoperabilidade vs. compatibilidade). Muitas características se sobrepõem (ex.: disponibilidade ↔ confiabilidade).
+PRINCÍPIOS DO DESIGN Boas práticas, princípios que seria ideal sempre ser seguido
 
-Trade-offs
-Toda escolha favorece algumas qualidades e prejudica outras (p.ex., mais segurança pode reduzir desempenho). “Arquitetura menos pior” = tornar explícitos esses compromissos e equilibrá-los com os objetivos do negócio.
-Como aplicar na prática
-Eleger poucas características prioritárias.
-Transformá-las em cenários mensuráveis (estímulo → resposta esperada).
-Definir táticas/decisões de design que as suportem.
-Mapear e aceitar trade-offs conscientemente.
-Validar continuamente (testes, monitoração, SLO/SLA).
+(arquitetura distribuida) - micro serviços - pequenas atividades bem feitas, cada micro serviço tem seu próprio banco de dados (cada um tem vida própria)
 
+sistema de mensageria - serviço colocado no meio da arquitetura, que permite a troca de mensagens dos micros serviços, um manda mensagem e o outro recebe
 
-Aula - 07/10/2025
-🧩 CQRS — Command Query Responsibility Segregation
-O CQRS (Command Query Responsibility Segregation) é um padrão arquitetural que separa as operações de escrita (Commands) e leitura (Queries) de um sistema, permitindo maior clareza, performance e escalabilidade.
+event driven architecture - arquitetura baseada em eventos (alexa - cria máquina virtual, responde a pergunta, e cai a máquina virtual)
 
-⚙️ Conceito
-Tradicionalmente, o mesmo modelo de dados é usado tanto para atualizar quanto para consultar informações.
-Com CQRS, esses dois fluxos são separados:
+Aula 6 - 01/09/2025
 
-Tipo	Responsabilidade	Exemplo	Foco
-Command	Executa ações que alteram o estado do sistema (criar, atualizar, excluir).	CreateOrderCommand, UpdateClienteCommand	Escrita
-Query	Recupera dados sem alterar o estado do sistema.	GetOrderByIdQuery, ListarClientesQuery	Leitura
+EXPECTATIVAS DO ARQUITETO
+
+Tomar decisões de arquitetura - decidir qual arquitetura/ estrutura será utilizada no sistema, utilizando sua experiência no mercado para orientar a sua equipe. "O segredo para tomar decisões arquiteturais eficientes é perguntar se a decisão da arquitetura está ajudando a orientar as equipes ao fazerem a escolha técnica certa ou se a decisão faz a escolha técnica por elas."
+
+Analisar continuamente a arquitetura - todo sistema muda com o tempo, com isso, é função do arquiteto analisar o sistema continuamente e atualizar de acorodo com a arquitetura do sistema. O famoso "não mexe, que está funcionando", não deve ser considerado, e sim tomar decições corretas de acordo com suas análises que facilitarão o sistema
+
+Manter-se atualizando com as últimas tendências - desenvolver software está cada vez mais complexo (Inteligência Artificial)
+
+Assegurar a conformidade com as decisões - o arquiteto verifica continuamente se as equipes de desenvolvimento seguem as decisões da arquitetura e os princípios do design definidos, documentados e comunicados por ele.
+
+Análise estática de código é a inspeção do código-fonte de um software sem executá-lo, utilizando ferramentas automatizadas para identificar bugs, vulnerabilidades de segurança e desvios de padrões de codificação antes da produção
+
+Exposição e experiência diverisades - um bom arquiteto já teve experiência em várias áreaa/funções e linguagens. Essencial ele ter conhecimento da regra de negócio do produto
+
+Ter conhecimento sobre o domínio do negócio -
+
+Ter habilidades interpessoais - um arquiteto precisa ser um gestor tambémm, um líder da equipe, incetivando e extaindo o melhor de cada membro da equipe
+
+Enteder e lidarr bem com questões políticas - fundamental negociar com o cliente, negociar mais prazos, funcionalidades, influenciar e proteger sua equipe
+
+DEADLOCK - (ou interbloqueio) é uma situação de impasse em computação onde dois ou mais processos ficam permanentemente bloqueados, cada um esperando que o outro libere um recurso que ele precisa para continuar sua execução. Isso cria uma espera circular, onde o Processo A espera por um recurso do Processo B, e o Processo B espera por um recurso do Processo A, impedindo que qualquer um deles avance.
+
+OPERAÇÕES - DevOps uma maneira de entregar valor ao meu cliente mais rápido metodologia que vai melhorando cada vez mais
+
+Aula 7 - 02/09/2025
+
+Resuma a diferença entre arquitetura e design ? A arquitetura de software define a estrutura global e os componentes principais de um sistema, ou seja, o que terá no sistema, enquanto o design se concentra nos detalhes de implementação desses componentes e suas interações em um nível mais baixo, ou seja, como será implamentado as decisões tomada pelo arquiteto. A arquitetura é uma visão de alto nível que garante requisitos globais como escalabilidade e segurança, enquanto o design detalha como cada parte do sistema funciona e se comunica.
+
+Como é a formação do conhecimento de um arquiteto modelo T? Uma formação ampla, não se concentra em apenas uma linguagem ou área específica de trabalho. O arquieto tem a capacidade de resolver o mesmo problema, utilizando meios diferentes.
+
+Aula - 07/10/2025 🧩 CQRS — Command Query Responsibility Segregation O CQRS (Command Query Responsibility Segregation) é um padrão arquitetural que separa as operações de escrita (Commands) e leitura (Queries) de um sistema, permitindo maior clareza, performance e escalabilidade.
+
+⚙️ Conceito Tradicionalmente, o mesmo modelo de dados é usado tanto para atualizar quanto para consultar informações. Com CQRS, esses dois fluxos são separados:
+
+Tipo Responsabilidade Exemplo Foco Command Executa ações que alteram o estado do sistema (criar, atualizar, excluir). CreateOrderCommand, UpdateClienteCommand Escrita Query Recupera dados sem alterar o estado do sistema. GetOrderByIdQuery, ListarClientesQuery Leitura
 
 Essa separação permite otimizações específicas para cada operação e facilita o uso de diferentes modelos de dados ou até bancos independentes.
 
-🚀 Benefícios
-🔹 Separação de responsabilidades: leitura e escrita ficam independentes.
-🔹 Maior escalabilidade: leitura e escrita podem escalar separadamente.
-🔹 Performance otimizada: queries mais rápidas e simples.
-🔹 Código mais limpo: fácil manutenção e testes.
+🚀 Benefícios 🔹 Separação de responsabilidades: leitura e escrita ficam independentes. 🔹 Maior escalabilidade: leitura e escrita podem escalar separadamente. 🔹 Performance otimizada: queries mais rápidas e simples. 🔹 Código mais limpo: fácil manutenção e testes.
 
-⚠️ Pontos de Atenção
-🔸 Aumenta a complexidade da arquitetura.
-🔸 Pode exigir sincronização entre os modelos de leitura e escrita.
+⚠️ Pontos de Atenção 🔸 Aumenta a complexidade da arquitetura. 🔸 Pode exigir sincronização entre os modelos de leitura e escrita.

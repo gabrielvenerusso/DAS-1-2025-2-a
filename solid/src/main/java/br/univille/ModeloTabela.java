@@ -2,13 +2,9 @@ package br.univille;
 
 import javax.swing.table.AbstractTableModel;
 
-public class ModeloTabela extends AbstractTableModel{
-
-
-    
+public class ModeloTabela extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        
         return true;
     }
 
@@ -24,7 +20,6 @@ public class ModeloTabela extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return "Java lindo";
+        return "Java lindo.";
     }
-
 }

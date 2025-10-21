@@ -5,8 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class Janelinha2 extends JFrame {
-    
-    private JTable tabelinha;
+    private final JTable tabelinha;
     
     public Janelinha2() {
         setTitle("Tabelinha");
@@ -19,6 +18,7 @@ public class Janelinha2 extends JFrame {
         add(new JScrollPane(tabelinha));
         setVisible(true);
     }
+
     public static void main(String[] args) {
         new Janelinha2();
     }
