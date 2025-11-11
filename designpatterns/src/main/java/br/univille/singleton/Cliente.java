@@ -2,16 +2,13 @@ package br.univille.singleton;
 
 public class Cliente {
     public static void main(String[] args) {
-        var segredo = "Palmeiras tem mundial";
-
+        var segredo = "Eu ainda gosto dela";
         var singleton = Singleton.getInstance();
         singleton.setSegredo(segredo);
+        mostrarSegredo();
+    }
 
-        //muitas linhas de codigo depois
-
-        System.out.println(
-            Singleton.getInstance()
-            .getSegredo());
-
+    public static void mostrarSegredo() {
+        System.out.println(Singleton.getInstance().getSegredo());
     }
 }
